@@ -2,10 +2,10 @@
 
 const int iterations = 500;
 
-Storage storage1 = new();
-Storage storage2 = new();
+FaillibleQos0Storage storage1 = new();
+FaillibleQos0Storage storage2 = new();
 
-var publishers = new List<Publisher>
+var publishers = new List<NonResilientPublisher>
 {
     new(storage1, storage2),
     new(storage1, storage2),

@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 
 namespace Transat;
 
-public class Storage
+public sealed class FaillibleQos0Storage
 {
     private volatile int _dataCounter = 0; 
     private static readonly Random RandomGenerator = new ();
@@ -31,7 +31,5 @@ public class Storage
         {
             Console.Write("-");
         }
-
-        
     }
 }
