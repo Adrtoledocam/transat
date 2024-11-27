@@ -6,7 +6,14 @@ public class NonResilientPublisher(FaillibleQos0Storage storage1, FaillibleQos0S
     
     public void Send(int message)
     {
-        storage1.Store(_id,message);
+        var uniqueMessageId = $"{_id}-{Guid.NewGuid().ToString("n")}";
+
+        while (!storage1.Data.Keys.Any(key => key.StartsWith(uniqueMessageId)))
+        {
+            storage1.Store(uniqueMessageId, message);
+
+        }
         storage2.Store(_id, message);
     }
+
 }
